@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="marketpageicon.svg">
+    <title>Tronsfamily market</title>
+    <style>
+
+body {
+    background-image: url('background.png');
+    background-repeat: repeat;
+    background-size: auto;
+    background-color: #000000;
+    margin: 0;
+    padding: 0;
+}
+.main_tag {
+    display: flex;
+    gap: 5px;
+    background-color: white;
+    color: black;
+    width: 100px;
+    height: 50px;
+    padding: 0px 0px;
+    text-align: top-right;
+}
+.links_tag {
+    display: flex;
+    gap: 5px;
+    background-color: white;
+    color: black;
+    width: 100px;
+    height: 50px;
+    padding: 0px 0px;
+    text-align: top-right;
+}
+.info_tag {
+    display: flex;
+    gap: 5px;
+    background-color: white;
+    color: black;
+    width: 100px;
+    height: 50px;
+    padding: 0px 0px;
+    text-align: top-right;
+}
+.other_tag {
+    display: flex;
+    gap: 5px;
+    background-color: white;
+    color: black;
+    width: 100px;
+    height: 50px;
+    padding: 0px 0px;
+    text-align: top-right;
+}
+.app_tag {
+    display: flex;
+    gap: 5px;
+    background-color: white;
+    color: black;
+    width: 100px;
+    height: 50px;
+    padding: 0px 0px;
+    text-align: top-right;
+}
+
+.link_color {color: transparent;}
+.headerr {display: flex; gap: 102px; justify-content: center;}
+.appiconheaderr {display: flex; gap: 102px; justify-content: center;}
+.horizontal_layout {display: flex; gap: 6px;}
+.lt {color: #ffff00;}
+.pt {color: green;}
+.hb {width: 50px; height: 50px;}
+.motto {text-align: center; color: yellow;}
+.a_warning {text-align: center; color: red;}
+.text_color {text-align: center; color: yellow;}
+.d-text {text-align: center; color: yellow;}
+
+.video-grid {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.video-container {
+    background: black;
+    color: white;
+    border: 1px solid yellow;
+    width: 350px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    padding-bottom: 20px;
+}
+
+.video-container h2 {
+    color: yellow;
+    font-size: 1.1rem;
+    margin: 15px 0 5px 0;
+}
+
+.file-label {
+    font-size: 0.85rem;
+    color: #ffff00;
+    margin-bottom: 15px;
+    font-family: monospace;
+}
+
+.video-wrapper {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+video, img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.info-btn {
+    background: #006600;
+    color: white;
+    border: 1px solid yellow;
+    width: 350px;
+    height: 50px;
+    text-align: center;
+    cursor: pointer;
+}
+
+    </style>
+
+    <style>
+        /* Fullscreen View Layer (Acts like a second body) */
+        #modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; 
+            left: 0; 
+            width: 100vw; 
+            height: 100vh;
+            background-image: url('background.png');
+            background-repeat: repeat;
+            background-color: #000000;
+            z-index: 9999;
+            overflow-y: auto; /* Enables vertical scrolling inside overlay */
+            padding: 20px 0;
+            box-sizing: border-box;
+        }
+
+        /* Container spanning the screen width */
+        #modal-box {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Top-right floating close button */
+        .btn-close {
+            position: fixed;
+            top: 15px; 
+            right: 25px;
+            cursor: pointer;
+            font-size: 40px;
+            color: #ff0000;
+            font-weight: bold;
+            z-index: 10000;
+            line-height: 1;
+            background: rgba(0,0,0,0.7);
+            padding: 2px 10px;
+            border: 1px solid red;
+        }
+
+        .text-container {
+            background: black;
+            color: white;
+            border: 1px solid yellow;
+            padding: 30px 20px;
+            margin-top: 20px;
+        }
+
+        #modal-text { 
+            margin-bottom: 25px; 
+            line-height: 1.4; 
+            color: yellow;
+        }
+
+        #modal-link { 
+            background: #007bff; 
+            color: white; 
+            padding: 12px 24px; 
+            text-decoration: none; 
+            border-radius: 0; 
+            font-weight: bold;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Fullscreen Page Overlay -->
+    <div id="modal-overlay">
+        <span class="btn-close" onclick="setItem(0)">&times;</span>
+        <div id="modal-box">
+            <h1 id="software-name" class="lt">info</h1>
+            <div class="text_color"><p>-----------------------------------------------------------------------------------------------------------------------------------------------</p></div>
+            <div class="text_color">
+                <p id="d-text"></p>
+                
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Shared Navigation Header -->
+    <div class="headerr">
+      <a href="https://ramssey9749.github.io/tronsfamily-main-page/" class="link_color"><div class="main_tag">
+        <img src="mainicon.png" alt="mainicon.png" class="hb">
+        <p>main</p>
+      </div></a>
+
+      <a href="https://ramssey9749.github.io/tronsfamily-links/" class="link_color"><div class="links_tag">
+        <img src="linksicon.png" alt="linksicon.png" class="hb">
+        <p>links</p>
+      </div></a>
+
+      <a href="https://ramssey9749.github.io/tronsfamily-info/" class="link_color"><div class="info_tag">
+        <img src="infoicon.png" alt="infoicon.png" class="hb">
+        <p>info</p>
+      </div></a>
+
+      <a href="https://ramssey9749.github.io/tronsfamily-apps/" class="link_color"><div class="other_tag">
+        <img src="appsicon.png" alt="appsicon.png" class="hb">
+        <p>apps</p>
+      </div></a>
+    </div>
+
+    <!-- Motto & Warning Text -->
+    <div class="motto"><p>help change for the better and repair the world with me and let us rise together</p></div>
+    <div class="a_warning"><p>warning this website is under development and may change</p></div>
+    <div class="a_warning"><p>more info under the info tab</p></div>
+
+    <div>
+        <div class="text_color"><p>-----------------------------------------------------------------------------------------------------------------------------------------------</p></div>
+
+        <div class="video-grid">
+            <div class="video-container">
+                <h2 id='text1'></h2>
+                <div class="video-wrapper">
+                    <video id="videoPlayer" controls autoplay loop muted playsinline></video>
+                </div>
+            </div>
+
+            <div class="video-container">
+                <h2 id='text2'></h2>
+                <div class="video-wrapper">
+                    <video id="videoPlayer2" controls autoplay loop muted playsinline></video>
+                </div>
+            </div>
+        </div>
+
+        <div class="video-grid">
+            <div class="info-btn" onclick="setItem(1)">
+                <div class="text_color"><p>more</p></div>
+            </div>
+
+            <div class="info-btn" onclick="setItem(2)">
+                <div class="text_color"><p>more</p></div>
+            </div>
+        </div>
+
+        <div class="text_color"><p>-----------------------------------------------------------------------------------------------------------------------------------------------</p></div>
+
+        <div class="video-grid">
+            <div class="video-container">
+                <h2 id='text3'></h2>
+                <div class="video-wrapper">
+                    <video id="videoPlayer3" controls autoplay loop muted playsinline></video>
+                </div>
+            </div>
+
+            <div class="video-container">
+                <h2 id='text4'></h2>
+                <div class="video-wrapper">
+                    <video id="videoPlayer4" controls autoplay loop muted playsinline></video>
+                </div>
+            </div>
+        </div>
+
+        <div class="video-grid">
+            <div class="info-btn" onclick="setItem(3)">
+                <div class="text_color"><p>more</p></div>
+            </div>
+
+            <div class="info-btn" onclick="setItem(4)">
+                <div class="text_color"><p>more</p></div>
+            </div>
+        </div>
+
+        <div class="text_color"><p>-----------------------------------------------------------------------------------------------------------------------------------------------</p></div>
+
+        <div class="video-grid">
+            <div class="video-container">
+                <h2 id='text5'></h2>
+                <div class="video-wrapper">
+                    <video id="videoPlayer5" controls autoplay loop muted playsinline></video>
+                </div>
+            </div>
+
+            <div class="video-container">
+                <h2 id='text6'></h2>
+                <div class="video-wrapper">
+                    <video id="videoPlayer6" controls autoplay loop muted playsinline></video>
+                </div>
+            </div>
+        </div>
+
+        <div class="video-grid">
+            <div class="info-btn" onclick="setItem(5)">
+                <div class="text_color"><p>more</p></div>
+            </div>
+
+            <div class="info-btn" onclick="setItem(6)">
+                <div class="text_color"><p>more</p></div>
+            </div>
+        </div>
+
+        <div class="text_color"><p>-----------------------------------------------------------------------------------------------------------------------------------------------</p></div>
+
+        <div class="video-grid">
+            <div class="video-container">
+                <h2 id='text7'></h2>
+                <div class="video-wrapper">
+                    <video id="videoPlayer7" controls autoplay loop muted playsinline></video>
+                </div>
+            </div>
+
+            <div class="video-container">
+                <h2 id='text8'></h2>
+                <div class="video-wrapper">
+                    <video id="videoPlayer8" controls autoplay loop muted playsinline></video>
+                </div>
+            </div>
+        </div>
+
+        <div class="video-grid">
+            <div class="info-btn" onclick="setItem(7)">
+                <div class="text_color"><p>more</p></div>
+            </div>
+
+            <div class="info-btn" onclick="setItem(8)">
+                <div class="text_color"><p>more</p></div>
+            </div>
+        </div>
+
+        <div class="text_color"><p>-----------------------------------------------------------------------------------------------------------------------------------------------</p></div>
+
+    </div>
+
+    <script>
+
+
+const na = '\n(currently not available)'
+
+const itt = ' Information '
+
+const info_names = [
+"Tronsfamily business card" + itt + na,
+"Tronsfamily token example" + itt + na,
+"Tronsfamily tokenizer (plastic)" + itt + na,
+"No product" + itt + na,
+"No product" + itt + na,
+"No product" + itt + na,
+"No product" + itt + na,
+"No product" + itt + na
+];
+
+const indexed_information = [
+"the 'Tronsfamily business card' is handed out to recommend people to this website's main page\nto help bring people together so we can change things for the better",
+"Tronsfamily tokens are a form of currency that anyone can earn by donating many types of\nresources from literal trash to treasure that can be used to redeem almost anything\nfrom raw resources to tools but thats not all you can also make these tokens yourself but its highly\nrecommended to get our custom tools for doing this safely because we actually care, these tokens come\nin many types from plastic to metal and are labeled to ensure we all know the value of the tokens a\nexample of the types of tokens we offer is:\n1. [99% pete] (plastic)\n2. [99% ps] (styrofoam)\n3. [99% fe] (iron)\n4. [99% sio2] (glass)\n you'll be able to tell because we will have a chart that tells you what the token is and its value to us\nalong with how much you need to turn in to earn one and what you can redeem with them",
+"this is a device thats like a mold-o-rama from the como park zoo and it allows you to take different waste\nplastics and make tokens for trading with us for various things",
+"there's nothing here right now.",
+"there's nothing here right now.",
+"there's nothing here right now.",
+"there's nothing here right now.",
+"there's nothing here right now."
+];
+
+
+        document.getElementById('text1').innerText = 'Tronsfamily business card\n(currently not available)';
+        document.getElementById('text2').innerText = 'Tronsfamily token examples\n(currently not available)';
+        document.getElementById('text3').innerText = 'Tronsfamily tokenizer (plastic)\n(currently not available)';
+        document.getElementById('text4').innerText = 'No product\n(currently not available)';
+        document.getElementById('text5').innerText = 'No product\n(currently not available)';
+        document.getElementById('text6').innerText = 'No product\n(currently not available)';
+        document.getElementById('text7').innerText = 'No product\n(currently not available)';
+        document.getElementById('text8').innerText = 'No product\n(currently not available)';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('videoPlayer').src = 'tronsfamily card showcase (start front)(1280x720).mp4';
+            document.getElementById('videoPlayer2').src = 'tronsfamily unknown token (start front) (1280x720).mp4';
+            document.getElementById('videoPlayer3').src = '';
+            document.getElementById('videoPlayer4').src = '';
+            document.getElementById('videoPlayer5').src = '';
+            document.getElementById('videoPlayer6').src = '';
+            document.getElementById('videoPlayer7').src = '';
+            document.getElementById('videoPlayer8').src = '';
+        });
+
+        let currentItem = 0;
+
+        function setItem(num) {
+            currentItem = num;
+            const overlay = document.getElementById('modal-overlay');
+
+            if (currentItem === 0) {
+                overlay.style.display = 'none';
+                document.body.style.overflow = 'auto'; // Re-enable background scrolling
+            } else {
+                overlay.style.display = 'block';
+                document.body.style.overflow = 'hidden'; // Lock main body scrolling
+                //document.getElementById('software-name').innerText = 'Item ' + num + ' Information';
+                document.getElementById('software-name').innerText = info_names[num - 1];
+                document.getElementById('d-text').innerText = indexed_information[num - 1];
+            }
+        }
+    </script>
+</body>
+</html>
