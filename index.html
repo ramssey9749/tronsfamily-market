@@ -6,7 +6,6 @@
     <link rel="icon" type="image/svg+xml" href="marketpageicon.svg">
     <title>Tronsfamily market</title>
     <style>
-
 body {
     background-image: url('background.png');
     background-repeat: repeat;
@@ -90,17 +89,22 @@ body {
     background: black;
     color: white;
     border: 1px solid yellow;
-    width: 350px;
+    width: 240px; // was 350px
     text-align: center;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     padding-bottom: 20px;
 }
 
+
 .video-container h2 {
-    color: yellow;
-    font-size: 1.1rem;
-    margin: 15px 0 5px 0;
+    color: yellow; /* Added missing semicolon */
+    font-size: 0.5rem;
+    margin: 10px auto 5px auto; /* Centered margin box */
+    text-align: center; /* Forces text alignment to center */
+    width: 100%; /* Ensures heading takes up full container width */
+    box-sizing: border-box;
 }
+
 
 .file-label {
     font-size: 0.85rem;
@@ -128,7 +132,7 @@ video, img {
     background: #006600;
     color: white;
     border: 1px solid yellow;
-    width: 350px;
+    width: 240px; // was 350px
     height: 50px;
     text-align: center;
     cursor: pointer;
@@ -214,7 +218,7 @@ video, img {
         <span class="btn-close" onclick="setItem(0)">&times;</span>
         <div id="modal-box">
             <h1 id="software-name" class="lt">info</h1>
-            <div class="text_color"><p>-----------------------------------------------------------------------------------------------------------------------------------------------</p></div>
+            <div class="text_color"><p>-------------------------------------------------------------------------------------------------------</p></div>
             <div class="text_color">
                 <p id="d-text"></p>
                 
@@ -252,7 +256,7 @@ video, img {
     <div class="a_warning"><p>more info under the info tab</p></div>
 
     <div>
-        <div class="text_color"><p>-----------------------------------------------------------------------------------------------------------------------------------------------</p></div>
+        <div class="text_color"><p>-------------------------------------------------------------------------------------------------------</p></div>
 
         <div class="video-grid">
             <div class="video-container">
@@ -280,7 +284,7 @@ video, img {
             </div>
         </div>
 
-        <div class="text_color"><p>-----------------------------------------------------------------------------------------------------------------------------------------------</p></div>
+        <div class="text_color"><p>-------------------------------------------------------------------------------------------------------</p></div>
 
         <div class="video-grid">
             <div class="video-container">
@@ -308,7 +312,7 @@ video, img {
             </div>
         </div>
 
-        <div class="text_color"><p>-----------------------------------------------------------------------------------------------------------------------------------------------</p></div>
+        <div class="text_color"><p>-------------------------------------------------------------------------------------------------------</p></div>
 
         <div class="video-grid">
             <div class="video-container">
@@ -336,7 +340,7 @@ video, img {
             </div>
         </div>
 
-        <div class="text_color"><p>-----------------------------------------------------------------------------------------------------------------------------------------------</p></div>
+        <div class="text_color"><p>-------------------------------------------------------------------------------------------------------</p></div>
 
         <div class="video-grid">
             <div class="video-container">
@@ -364,7 +368,7 @@ video, img {
             </div>
         </div>
 
-        <div class="text_color"><p>-----------------------------------------------------------------------------------------------------------------------------------------------</p></div>
+        <div class="text_color"><p>-------------------------------------------------------------------------------------------------------</p></div>
 
     </div>
 
@@ -435,6 +439,12 @@ const indexed_information = [
                 document.getElementById('d-text').innerText = indexed_information[num - 1];
             }
         }
+
+// will need in the future
+//----------------------------------
+
+//------
+
     </script>
 </body>
 </html>
