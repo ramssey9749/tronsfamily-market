@@ -77,6 +77,8 @@ body {
 .text_color {text-align: center; color: yellow;}
 .d-text {text-align: center; color: yellow;}
 
+
+
 .small-text{
     color: yellow;
     font-size: 0.7rem;
@@ -265,7 +267,15 @@ video, img {
     <div class="a_warning"><p>more info under the info tab</p></div>
 
     <div>
+
+
         <div class="text_color"><p>-------------------------------------------------------------------------------------------------------</p></div>
+
+
+<div class="a_warning"><p id="a_warning">disclaimer</p></div>
+<div class="text_color"><p id="text_color"></p></div>
+
+        <div class="text_color"<p>--------------------------------------------------------------------------------------------------------</p></div>
 
         <div class="video-grid">
             <div class="video-container">
@@ -383,11 +393,11 @@ video, img {
 
     <script>
 
-
+// variables to help simplify file size
 const na = '\n(currently not available)'
-
 const itt = ' Information '
 
+// info pop-up header texts
 const info_names = [
 "Tronsfamily business card" + itt + na,
 "Tronsfamily token example" + itt + na,
@@ -399,6 +409,7 @@ const info_names = [
 "No product" + itt + na
 ];
 
+// info pop-up texts
 const indexed_information = [
 "the 'Tronsfamily business card' is handed out to recommend people to this website's main page\nto help bring people together so we can change things for the better",
 "Tronsfamily tokens are a form of currency that anyone can earn by donating many types of\nresources from literal trash to treasure that can be used to redeem almost anything\nfrom raw resources to tools but thats not all you can also make these tokens yourself but its highly\nrecommended to get our custom tools for doing this safely because we actually care, these tokens come\nin many types from plastic to metal and are labeled to ensure we all know the value of the tokens a\nexample of the types of tokens we offer is:\n1. [99% pete] (plastic)\n2. [99% ps] (styrofoam)\n3. [99% fe] (iron)\n4. [99% sio2] (glass)\n you'll be able to tell because we will have a chart that tells you what the token is and its value to us\nalong with how much you need to turn in to earn one and what you can redeem with them",
@@ -410,7 +421,14 @@ const indexed_information = [
 "there's nothing here right now."
 ];
 
+// disclaimer text
+const disclaimer_text = "do to a lack of resources and funding products aren't not yet\navailable and if you'd like to help us out there are ways to do so\nfinancially visit the Tronsfamily links tab and for non-financial\nsupport we don't yet have anything setup yet we will eventually.";
 
+
+        // texts
+        document.getElementById('text_color').innerText = disclaimer_text;
+
+        // 
         document.getElementById('text1').innerText = 'Tronsfamily business card\n(currently not available)';
         document.getElementById('text2').innerText = 'Tronsfamily token examples\n(currently not available)';
         document.getElementById('text3').innerText = 'Tronsfamily tokenizer (plastic)\n(currently not available)';
@@ -420,6 +438,7 @@ const indexed_information = [
         document.getElementById('text7').innerText = 'No product\n(currently not available)';
         document.getElementById('text8').innerText = 'No product\n(currently not available)';
 
+        // video loading links
         document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('videoPlayer').src = 'tronsfamily card showcase (start front)(1280x720).mp4';
             document.getElementById('videoPlayer2').src = 'tronsfamily unknown token (start front) (1280x720).mp4';
@@ -431,6 +450,7 @@ const indexed_information = [
             document.getElementById('videoPlayer8').src = '';
         });
 
+        // info pop-up logic
         let currentItem = 0;
 
         function setItem(num) {
