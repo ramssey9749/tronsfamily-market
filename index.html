@@ -14,47 +14,38 @@ body {
     margin: 0;
     padding: 0;
 }
-.main_tag {
+.controls {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 12px 24px;
+    border-radius: 30px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
     display: flex;
-    gap: 5px;
-    background-color: white;
-    color: black;
-    width: 100px;
-    height: 50px;
-    padding: 0px 0px;
-    text-align: top-right;
+    //display: none;
+    align-items: center;
+    gap: 15px;
+    backdrop-filter: blur(4px);
 }
-.links_tag {
-    display: flex;
-    gap: 5px;
-    background-color: white;
-    color: black;
-    width: 100px;
-    height: 50px;
-    padding: 0px 0px;
-    text-align: top-right;
+
+/* Updated inner-content scaling rules */
+.inner-content {
+    transform-origin: top center;
+    margin-top: 0px; 
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
 }
-.info_tag {
-    display: flex;
-    gap: 5px;
-    background-color: white;
-    color: black;
-    width: 100px;
-    height: 50px;
-    padding: 0px 0px;
-    text-align: top-right;
-}
-.other_tag {
-    display: flex;
-    gap: 5px;
-    background-color: white;
-    color: black;
-    width: 100px;
-    height: 50px;
-    padding: 0px 0px;
-    text-align: top-right;
-}
-.app_tag {
+
+
+.main_tag,
+.links_tag,
+.info_tag,
+.app_tag,
+.apps_tag {
     display: flex;
     gap: 5px;
     background-color: white;
@@ -100,7 +91,7 @@ body {
     background: black;
     color: white;
     border: 1px solid yellow;
-    width: 240px; // was 350px
+    width: 240px;
     text-align: center;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     padding-bottom: 20px;
@@ -143,30 +134,29 @@ video, img {
     background: #006600;
     color: white;
     border: 1px solid yellow;
-    width: 240px; // was 350px
+    width: 240px;
     height: 50px;
     text-align: center;
     cursor: pointer;
 }
 
-    </style>
 
-    <style>
+
         /* Fullscreen View Layer (Acts like a second body) */
         #modal-overlay {
             display: none;
             position: fixed;
             top: 0; 
             left: 0; 
-            width: 100vw; 
-            height: 100vh;
+            width: 100%; 
+            height: 100%;
             background-image: url('background.png');
             background-repeat: repeat;
             background-color: #000000;
-            z-index: 9999;
+            z-index: 9998;
             overflow-y: auto; /* Enables vertical scrolling inside overlay */
-            padding: 20px 0;
             box-sizing: border-box;
+            border: 1px solid yellow;
         }
 
         /* Container spanning the screen width */
@@ -177,9 +167,10 @@ video, img {
             margin: 0 auto;
             color: white;
             text-align: center;
-            padding: 20px;
+            padding: 0px;
             box-sizing: border-box;
         }
+
 
         /* Top-right floating close button */
         .btn-close {
@@ -202,7 +193,7 @@ video, img {
             color: white;
             border: 1px solid yellow;
             padding: 30px 20px;
-            margin-top: 20px;
+            margin-top: 30px; //20px;
         }
 
         #modal-text { 
@@ -224,10 +215,22 @@ video, img {
 </head>
 <body>
 
+
+    <!-- 1. Centered UI Control Slider Layer -->
+    <div class="controls">
+        <label for="scaleSlider" style="color: #1e293b;"><strong>Viewport Zoom:</strong></label>
+        <input type="range" id="scaleSlider" min="0.2" max="2.0" step="0.02" value="2.0">
+        <span id="scaleValue" style="color: #1e293b; font-variant-numeric: tabular-nums; font-weight: bold;">1.00x</span>
+    </div>
+
+    <!-- The layout that stays locked center mass and scales uniformly outward -->
+    <div class="inner-content" id="scalableCanvas">
+
     <!-- Fullscreen Page Overlay -->
     <div id="modal-overlay">
         <span class="btn-close" onclick="setItem(0)">&times;</span>
         <div id="modal-box">
+        
             <h1 id="software-name" class="lt">info</h1>
 <div class="text_color"><p>-------------------------------------------------------------------------------------------------------------------------------------</p></div>
 
@@ -256,7 +259,7 @@ video, img {
         <p>info</p>
       </div></a>
 
-      <a href="https://ramssey9749.github.io/tronsfamily-apps/" class="link_color"><div class="other_tag">
+      <a href="https://ramssey9749.github.io/tronsfamily-apps/" class="link_color"><div class="apps_tag">
         <img src="appsicon.png" alt="appsicon.png" class="hb">
         <p>apps</p>
       </div></a>
@@ -391,23 +394,23 @@ video, img {
         <div class="text_color"><p>-------------------------------------------------------------------------------------------------------</p></div>
 
     </div>
-
+</div>
     <script>
 
 // variables to help simplify file size
-const na = '\n(currently not available)'
-const itt = ' Information '
+const na = '\n(currently not available)';
+const itt = ''; // ' Information '
 
 // info pop-up header texts
 const info_names = [
-"Tronsfamily business card" + itt + na,
-"Tronsfamily token example" + itt + na,
-"Tronsfamily tokenizer (plastic)" + itt + na,
-"No product" + itt + na,
-"No product" + itt + na,
-"No product" + itt + na,
-"No product" + itt + na,
-"No product" + itt + na
+"item into:\nTronsfamily business card" + itt + na,
+"item into:\nTronsfamily token example" + itt + na,
+"item into:\nTronsfamily tokenizer (plastic)" + itt + na,
+"item into:\nNo product" + itt + na,
+"item into:\nNo product" + itt + na,
+"item into:\nNo product" + itt + na,
+"item into:\nNo product" + itt + na,
+"item into:\nNo product" + itt + na
 ];
 
 // info pop-up texts
@@ -486,10 +489,28 @@ const disclaimer_text = "do to a lack of resources and funding products aren't n
             }
         }
 
-// will need in the future
-//----------------------------------
 
-//------
+        // Scaling Logic Interface
+        const slider = document.getElementById('scaleSlider');
+        const scaleLabel = document.getElementById('scaleValue');
+        const canvas = document.getElementById('scalableCanvas');
+
+        function applyCenterScale(scaleFactor) {
+            // Update textual layout indicator tracking exact float precision
+            scaleLabel.textContent = `${parseFloat(scaleFactor).toFixed(2)}x`;
+
+            // Transform layout visually outwards from absolute center coordinate
+            //canvas.style.transform = `scaleX(${scaleFactor})`;
+            //canvas.style.transform = `scale(${scaleFactor})`;
+            canvas.style.zoom = scaleFactor;
+        }
+
+        slider.addEventListener('input', (e) => {
+            applyCenterScale(e.target.value);
+        });
+
+        // Initialize at normal scale state
+        applyCenterScale(2.0);
 
     </script>
 </body>
